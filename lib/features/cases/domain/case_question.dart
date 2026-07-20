@@ -1,6 +1,7 @@
 class CaseQuestion {
   final String id;
   final String questionText;
+  final String? evidenceSnippet;
   final List<String> options;
   final int correctAnswerIndex;
   final int xpReward;
@@ -8,6 +9,7 @@ class CaseQuestion {
   const CaseQuestion({
     required this.id,
     required this.questionText,
+    this.evidenceSnippet,
     required this.options,
     required this.correctAnswerIndex,
     required this.xpReward,
@@ -16,6 +18,7 @@ class CaseQuestion {
   CaseQuestion copyWith({
     String? id,
     String? questionText,
+    String? evidenceSnippet,
     List<String>? options,
     int? correctAnswerIndex,
     int? xpReward,
@@ -23,6 +26,7 @@ class CaseQuestion {
     return CaseQuestion(
       id: id ?? this.id,
       questionText: questionText ?? this.questionText,
+      evidenceSnippet: evidenceSnippet ?? this.evidenceSnippet,
       options: options ?? this.options,
       correctAnswerIndex: correctAnswerIndex ?? this.correctAnswerIndex,
       xpReward: xpReward ?? this.xpReward,
@@ -31,7 +35,7 @@ class CaseQuestion {
 
   @override
   String toString() {
-    return 'CaseQuestion(id: $id, questionText: $questionText, options: $options, correctAnswerIndex: $correctAnswerIndex, xpReward: $xpReward)';
+    return 'CaseQuestion(id: $id, questionText: $questionText, evidenceSnippet: $evidenceSnippet, options: $options, correctAnswerIndex: $correctAnswerIndex, xpReward: $xpReward)';
   }
 
   @override
@@ -40,12 +44,13 @@ class CaseQuestion {
     return other is CaseQuestion &&
         other.id == id &&
         other.questionText == questionText &&
+        other.evidenceSnippet == evidenceSnippet &&
         other.correctAnswerIndex == correctAnswerIndex &&
         other.xpReward == xpReward;
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, questionText, correctAnswerIndex, xpReward);
+    return Object.hash(id, questionText, evidenceSnippet, correctAnswerIndex, xpReward);
   }
 }
