@@ -9,6 +9,8 @@ class CyberCase {
   final CaseDifficulty difficulty;
   final List<CaseQuestion> questions;
   final bool isCompleted;
+  final int progressPercent;
+  final bool isLocked;
 
   const CyberCase({
     required this.id,
@@ -17,6 +19,8 @@ class CyberCase {
     required this.difficulty,
     required this.questions,
     this.isCompleted = false,
+    this.progressPercent = 0,
+    this.isLocked = false,
   });
 
   CyberCase copyWith({
@@ -26,6 +30,8 @@ class CyberCase {
     CaseDifficulty? difficulty,
     List<CaseQuestion>? questions,
     bool? isCompleted,
+    int? progressPercent,
+    bool? isLocked,
   }) {
     return CyberCase(
       id: id ?? this.id,
@@ -34,12 +40,14 @@ class CyberCase {
       difficulty: difficulty ?? this.difficulty,
       questions: questions ?? this.questions,
       isCompleted: isCompleted ?? this.isCompleted,
+      progressPercent: progressPercent ?? this.progressPercent,
+      isLocked: isLocked ?? this.isLocked,
     );
   }
 
   @override
   String toString() {
-    return 'CyberCase(id: $id, title: $title, description: $description, difficulty: $difficulty, questions: $questions, isCompleted: $isCompleted)';
+    return 'CyberCase(id: $id, title: $title, description: $description, difficulty: $difficulty, questions: $questions, isCompleted: $isCompleted, progressPercent: $progressPercent, isLocked: $isLocked)';
   }
 
   @override
@@ -50,11 +58,13 @@ class CyberCase {
         other.title == title &&
         other.description == description &&
         other.difficulty == difficulty &&
-        other.isCompleted == isCompleted;
+        other.isCompleted == isCompleted &&
+        other.progressPercent == progressPercent &&
+        other.isLocked == isLocked;
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, title, description, difficulty, isCompleted);
+    return Object.hash(id, title, description, difficulty, isCompleted, progressPercent, isLocked);
   }
 }
